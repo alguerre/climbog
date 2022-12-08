@@ -4,7 +4,7 @@ from typing import Dict, Set
 import pytest
 from pandas import DataFrame
 
-import api.api as uut
+import api.repository as repository
 
 
 @pytest.mark.parametrize(
@@ -39,8 +39,8 @@ import api.api as uut
     ],
 )
 def test_get_climbing_years(data: DataFrame, expected: Set[int]):
-    uut.climbing_data = data
-    assert uut.get_climbing_years() == expected
+    repository.climbing_data = data
+    assert repository.get_climbing_years() == expected
 
 
 @pytest.mark.parametrize(
@@ -65,8 +65,8 @@ def test_get_climbing_years(data: DataFrame, expected: Set[int]):
     ],
 )
 def test_get_climbing_days_in_year(data: DataFrame, year: int, expected: int):
-    uut.climbing_data = data
-    assert uut.get_climbing_days_in_year(year) == expected
+    repository.climbing_data = data
+    assert repository.get_climbing_days_in_year(year) == expected
 
 
 @pytest.mark.parametrize(
@@ -94,8 +94,8 @@ def test_get_climbing_days_in_year(data: DataFrame, year: int, expected: int):
 def test_get_climbing_days_in_month(
     data: DataFrame, year: int, month: int, expected: int
 ):
-    uut.climbing_data = data
-    assert uut.get_climbing_days_in_year(year) == expected
+    repository.climbing_data = data
+    assert repository.get_climbing_days_in_year(year) == expected
 
 
 @pytest.mark.parametrize(
@@ -119,5 +119,5 @@ def test_get_climbing_days_in_month(
     ],
 )
 def test_get_days_per_crag(data: DataFrame, expected: Dict[str, int]):
-    uut.climbing_data = data
-    assert uut.get_days_per_crag() == expected
+    repository.climbing_data = data
+    assert repository.get_days_per_crag() == expected
