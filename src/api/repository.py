@@ -1,10 +1,15 @@
-from typing import Dict, Set
-
+from typing import Dict, Set, Optional
+from enum import Enum
 import pandas as pd
 
 from api.paths import DATA_SOURCE
 
 climbing_data: pd.DataFrame
+
+
+class Zone(Enum):
+    crag = "CRAG"
+    sector = "SECTOR"
 
 
 def load_data():
@@ -56,3 +61,21 @@ def get_days_per_crag_year(year: int):
     data = data.drop_duplicates()
 
     return data.groupby(["Lugar"]).count()["Fecha"].to_dict()
+
+
+def get_zone_days_data(year: Optional[int | str]) -> pd.DataFrame:
+    data = climbing_data[["Fecha", "Lugar", "Sector"]]
+    if not year:
+        return data
+    elif isinstance(year, int):
+        return data[data["Fecha"].dt.year == year]
+    elif year == 'last':
+        raise NotImplementedError
+
+
+def get_days_by_zone(data: pd.DataFrame, zone: Zone):
+    common_columns = ["Lugar"] if zone == Zone.crag else ["Lugar", "Sector"]
+    data = data[["Fecha"] + common_columns]
+    data = data.drop_duplicates()
+
+    return data.groupby(common_columns).count()["Fecha"].to_dict()
