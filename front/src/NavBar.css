@@ -1,0 +1,46 @@
+.navbar {
+    background-color: #fc5200;
+    font-family: MaisonNeue, Segoe UI, Helvetica Neue, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+.navcontainer {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@media only screen and (max-width: 420px) {
+  .navcontainer {
+    flex-flow: column wrap;
+  }
+}
+
+.navcontainer a {
+    display: inline-block;
+    padding: 25px;  /* avoid overlapping of buttons */
+    margin: 0 25px;  /* vertical and horizontal margins */
+    text-decoration: none; /* remove automatic underscore */
+    color: #ffffff;
+}
+
+.navcontainer li {
+    list-style-type: none;
+}
+
+.navcontainer a:hover {
+    background-color: #ffd3be;
+    color: #fc5200
+}
+
+.navcontainer .active {  /* active is set in class regardless the class in activeClassName */
+    text-decoration: underline;
+    text-decoration-style: double;
+}
+
+.navcontainer img {
+    display: inline-block;
+    padding: 12px;
+    margin: 0 25px;
+    width: 40px;
+    height: 40px;
+    filter: invert(98%);  /* change black line to white */
+}
