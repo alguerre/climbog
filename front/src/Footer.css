@@ -1,0 +1,20 @@
+Footer {
+    background-color: #fc5200;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    font-family: MaisonNeue, Segoe UI, Helvetica Neue, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+    /* centering text and image */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+Footer img {
+    padding: 30px 20px 20px 20px; /* exact centering */
+    width: 40px;
+    height: 40px;
+    filter: invert(98%);  /* change black line to white */
+}
